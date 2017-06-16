@@ -70,9 +70,14 @@ namespace UcAsp.Gainscha
                 return "";
             }
         }
+        /// <summary>
+        /// 将标签纸向前推送指定的长度
+        /// </summary>
+        /// <param name="x">单位mm</param>
+        /// <returns></returns>
         public GPPrinterHelper withFeed(int x)
         {
-            byte[] feed = Encoding.UTF8.GetBytes("GAP " + x * dotToMM + " \r\n");
+            byte[] feed = Encoding.UTF8.GetBytes("FEED " + x * dotToMM + " \r\n");
             arryList.AddRange(feed);
             return this;
         }
@@ -99,7 +104,7 @@ namespace UcAsp.Gainscha
         /// </summary>
         /// <param name="s">1~6</param>
         /// <returns></returns>
-        public GPPrinterHelper withSpeep(int s)
+        public GPPrinterHelper withSpeed(int s)
         {
             byte[] speed = Encoding.UTF8.GetBytes("SPEED " + s + "\r\n");
             arryList.AddRange(speed);
@@ -110,7 +115,7 @@ namespace UcAsp.Gainscha
         /// </summary>
         /// <param name="d">1~15</param>
         /// <returns></returns>
-        public GPPrinterHelper withDensityd(int d)
+        public GPPrinterHelper withDensity(int d)
         {
             byte[] density = Encoding.UTF8.GetBytes("DENSITY " + d + "\r\n");
             arryList.AddRange(density);
@@ -133,7 +138,7 @@ namespace UcAsp.Gainscha
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public GPPrinterHelper withFeference(int x, int y)
+        public GPPrinterHelper withReference(int x, int y)
         {
             //TODO:200dpi *8
             //300dpi *12
